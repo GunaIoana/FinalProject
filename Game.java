@@ -182,6 +182,10 @@ public class Game implements ActionListener {
     }
     
     if(ae.getSource() == this.nextQuestion || index == 0){
+      if(index == triviaQuestions.size()) {
+        endGame();
+        return;
+      }
       question.setText(triviaQuestions.get(index).getQuestionText());
       optionOne.setText(triviaQuestions.get(index).getAnswerOne());
       optionTwo.setText(triviaQuestions.get(index).getAnswerTwo());
@@ -191,20 +195,22 @@ public class Game implements ActionListener {
       score.setText("Score " + points);
       showQuestionContent();
       index++;
-      if(index == triviaQuestions.size()) {
-        endGame();
-      }
+
     } else if(ae.getSource() == this.optionOne && triviaQuestions.get(index-1).getCorrectAns() == 1 ||
               ae.getSource() == this.optionTwo && triviaQuestions.get(index-1).getCorrectAns() == 2 ||
               ae.getSource() == this.optionThree && triviaQuestions.get(index-1).getCorrectAns() == 3 ||
               ae.getSource() == this.optionFour && triviaQuestions.get(index-1).getCorrectAns() == 4) {
       points = points + triviaQuestions.get(index-1).getPoints();
+      if (index == triviaQuestions.size())
+        nextQuestion.setText("<html><font color='red' size='6'>Finish</font></html>");
       //calling the method to hide the question after answering
       hideQuestionContent();
       //display label if answer was correct and show points 
       yesno.setText("Correct!");
       score.setText("Score " + points);
     } else {
+      if (index == triviaQuestions.size())
+        nextQuestion.setText("<html><font color='red' size='6'>Finish</font></html>");
       hideQuestionContent();
       //display label if answer was wrong 
       yesno.setText("Wrong!");
