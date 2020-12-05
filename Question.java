@@ -5,7 +5,6 @@
 * @version December 3rd
 */
 
-
 class Question {
   String questionText;
   String answerOne;

@@ -1,2 +1,2 @@
-User name: a
-Score: 10
+User name: ioana
+Score: 25

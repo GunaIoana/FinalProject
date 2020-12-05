@@ -114,7 +114,7 @@ public class Game implements ActionListener {
       }
   }
 
-  //method that hides to question after choosing an answer
+  //method that hides the question after choosing an answer
   void hideQuestionContent() {
     question.setVisible(false);
     optionOne.setVisible(false);
